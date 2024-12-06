@@ -1,3 +1,18 @@
+.horizonte-numero {
+    display: inline-block;
+    font-size: 1.9em;
+    background-color: #F3C301;
+    padding: 0.1em 0.5em;
+    border-radius: 10px;
+    color: #FFF;
+    min-width: 2em;
+    text-align: center;
+    cursor: pointer;
+}
+.horizonte-numero:hover {
+    background-color: #D1A801;
+}
+
 .prospectiva {
     display: inline-block;
     font-size: 0.9em;

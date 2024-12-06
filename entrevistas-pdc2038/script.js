@@ -14,9 +14,8 @@ var horizontesApp = createApp({
             nombreElemento: 'conclusión',
             nombreElementos: 'horizontes',
             menu:[
-                {name: 'horizontes.html', title: 'horizontes', active: true},
-                {name: 'datos.html', title: 'Datos', active: false},
-                {name: 'mapas.html', title: 'Mapas', active: false},
+                {name: 'horizontes.html', title: 'Horizontes', active: true},
+                {name: 'entrevistados.html', title: 'Entrevistados', active: false},
             ],
             loading: false,
             section:'lista',
