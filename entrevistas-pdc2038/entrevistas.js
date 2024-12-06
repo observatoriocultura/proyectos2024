@@ -2,24 +2,24 @@
 const url = window.location.href;
 // Crea un nuevo objeto URLSearchParams a partir de la URL actual
 const urlParams = new URLSearchParams(window.location.search);
-// Obtiene el valor del parámetro 'horizonte_id'
-const elementoIdInicial = urlParams.get('horizonte_id');
+// Obtiene el valor del parámetro 'entrevistado_id'
+const elementoIdInicial = urlParams.get('entrevistado_id');
 const baseUrl = window.location.origin + window.location.pathname;
 
 // VueApp
 //-----------------------------------------------------------------------------
-var horizontesApp = createApp({
+var entrevistasApp = createApp({
     data(){
         return{
             nombreElemento: 'conclusión',
-            nombreElementos: 'horizontes',
+            nombreElementos: 'entrevistas',
             menu:[
-                {name: 'horizontes.html', title: 'Horizontes', active: true},
-                {name: 'entrevistas.html', title: 'Entrevistas', active: false},
+                {name: 'horizontes.html', title: 'Horizontes', active: false},
+                {name: 'entrevistas.html', title: 'Entrevistas', active: true},
             ],
             loading: false,
             section:'lista',
-            elementos: dataHorizontes,
+            elementos: dataEntrevistas,
             conclusiones: dataConclusiones,
             currentId: elementoIdInicial,
             currentElement: {'id':0,'nombre':'Cargando...'},
@@ -39,7 +39,7 @@ var horizontesApp = createApp({
         },
         getList: function(){
             this.loading = true
-            axios.get('projects/entrevistas-pdc2038/data/horizontes.json')
+            axios.get('projects/entrevistas-pdc2038/data/entrevistas.json')
             .then(response => {
                 this.elementos = response.data
             })
@@ -61,12 +61,12 @@ var horizontesApp = createApp({
             }
             return prefix + '-' + Pcrn.textToClass(text)
         },
-        setCurrent: function(horizonteId){
+        setCurrent: function(entrevistadoId){
             this.section = 'conclusiones'
-            this.currentId = horizonteId
-            this.currentElement = this.elementos.find(elemento => elemento['id'] == horizonteId)
+            this.currentId = entrevistadoId
+            this.currentElement = this.elementos.find(elemento => elemento['id'] == entrevistadoId)
             this.scrollToTop()
-            history.pushState(null, null, baseUrl +'?horizonte_id=' + horizonteId)
+            history.pushState(null, null, baseUrl +'?entrevistado_id=' + entrevistadoId)
 
         },
         scrollToTop: function(){
@@ -101,7 +101,7 @@ var horizontesApp = createApp({
         conclusionesFiltradas: function() {
             var listaFiltrada = this.conclusiones
             //listaFiltrada = listaFiltrada.filter(elemento => this.filtroEstados.includes(elemento['estado']))
-            listaFiltrada = listaFiltrada.filter(conclusion => conclusion.horizonte_id == this.currentElement.id)
+            listaFiltrada = listaFiltrada.filter(conclusion => conclusion.entrevistado_id == this.currentElement.id)
             /*if (this.q.length > 0) {
                 var fieldsToSearch = ['nombre','descripcion']
                 listaFiltrada = PmlSearcher.getFilteredResults(this.q, listaFiltrada, fieldsToSearch)
@@ -110,4 +110,4 @@ var horizontesApp = createApp({
         },
 
     }
-}).mount('#horizontesApp')
+}).mount('#entrevistasApp')
