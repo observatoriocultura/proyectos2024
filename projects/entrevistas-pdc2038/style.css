@@ -1,0 +1,28 @@
+.prospectiva {
+    display: inline-block;
+    font-size: 0.9em;
+    background-color: #FAFAFA;
+    padding: 0.1em 0.5em;
+    border-radius: 10px;
+    color: #FFF;
+}
+
+.prospectiva-amenaza { background-color: #E22964;}
+.prospectiva-oportunidad { background-color: #5A90DF;}
+.prospectiva-debilidad { background-color: #F3C301; color: #333;}
+.prospectiva-fortaleza { background-color: #AEE001; color: #333; }
+
+.sentimiento {
+    display: inline-block;
+    font-size: 1.2em;
+    background-color: #FAFAFA;
+    padding: 0.1em 0.5em;
+    border-radius: 10px;
+    color: #FFF;
+    min-width: 3em;
+    text-align: center;
+}
+
+.sentimiento-negativo { background-color: #F15B6D;}
+.sentimiento-neutral { background-color: #F3C301;}
+.sentimiento-positivo { background-color: #59B560;}
