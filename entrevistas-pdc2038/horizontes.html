@@ -29,7 +29,10 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="data/horizontes.js"></script>
+    <script src="data/conclusiones_generales.js"></script>
+    <script src="data/conclusiones_n2.js"></script>
     <script src="data/conclusiones.js"></script>
+    <script src="data/contenidos.js"></script>
 
 </head>
 <body>
@@ -100,7 +103,7 @@
                         </div>
                         <div class="col-md-10">
                             <h5 class="card-title text-main">
-                                <a v-bind:href="elemento.link" class="pointer" v-on:click="setCurrent(elemento.id)"
+                                <a v-bind:href="elemento.link" class="pointer" v-on:click="setCurrent(elemento.id, 'conclusiones')"
                                     v-bind:title="`[` + elemento.id + `] ` + elemento.nombre">
                                     {{ elemento.nombre }}
                                 </a>
@@ -110,16 +113,113 @@
                     </div>
                 </div>
 
-                <div v-show="section == 'conclusiones'">
-                    <div class="mb-2">
-                        <button class="btn btn-light btn-sm" v-on:click="section = 'lista'">
-                            <i class="fas fa-arrow-left"></i>
-                            Volver
-                        </button>
+                <div v-show="currentId != 0">
+                    <div class="border-bottom mb-3">
+                        <div class="mb-2">
+                            <button class="btn btn-light btn-sm" v-on:click="resetCurrent()">
+                                <i class="fas fa-arrow-left"></i>
+                                Volver
+                            </button>
+                        </div>
+                        <div class="py-3 text center d-flex justify-content-center">
+                            <div class="horizonte-selector" v-for="horizonte in elementos" v-bind:class="{'active': horizonte.id == currentElement.id }" v-on:click="setCurrent(horizonte.id)">
+                                {{ horizonte.id }}
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <small class="text-muted">HORIZONTE</small>
+                        </div>
+                        <h3 class="text-main text-center">{{ currentElement.nombre }}</h3>
                     </div>
-                    <h3 class="text-main text-center">{{ currentElement.nombre }}</h3>
+    
+                    <!-- SUBMENÚ -->
+                    <ul class="nav nav-pills justify-content-center mb-3">
+                        <li class="nav-item pointer" v-for="pagina in submenu" v-show="pagina.display == true">
+                            <a class="nav-link" v-bind:class="{'active': pagina.name == section }"
+                                v-on:click="setSubmenu(pagina.name)"
+                            >
+                                {{ pagina.title }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-                    <div v-for="conclusion in conclusionesFiltradas" class="row mb-3">
+
+                <!-- LISTA DE CONCLUSIONES GENERALES -->
+                <div v-show="section == 'conclusiones'">
+                    <p>{{ contenidos[0]['descripcion'] }}</p>
+                    <div v-for="conclusion in conclusionesGeneralesFiltradas" class="row mb-3">
+                        <div class="col-md-2 text-center">
+                            <div class="sentimiento" v-bind:class="classSentimiento(conclusion['SENTIMIENTO'])">
+                                {{ conclusion['SENTIMIENTO'] }}
+                            </div>
+                            <div>
+                                <small class="analisis-sentimiento">Sentimiento</small>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            
+                            <p>
+                                <span class="prospectiva" v-bind:class="textToClass(conclusion['PROSPECTIVA'], 'prospectiva')">{{ conclusion['PROSPECTIVA'] }}</span>
+                            </p>
+                            <p><small class="text-muted">Temática: </small>{{ conclusion['TEMÁTICA'] }}</p>
+                            <p>
+                                {{ conclusion['CONCLUSIÓN PARA ADULTO'] }}
+                            </p>
+                            <div class="mb-2">
+                                <div>
+                                    Relevancia {{ conclusion['PRIORIDAD'] }}/1
+                                </div>
+                                <div class="progress" style="height: 5px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-label="Example 1px high" v-bind:style="relevanciaPercent(conclusion['PRIORIDAD'])" v-bind:aria-valuenow="conclusion['PRIORIDAD']" aria-valuemin="0" aria-valuemax="100">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- LISTA DE CONCLUSIONES -->
+                <div v-show="section == 'conclusionesN2'">
+                    <p>{{ contenidos[1]['descripcion'] }}</p>
+                    <div v-for="conclusion in conclusionesN2Filtradas" class="row mb-3">
+                        <div class="col-md-2 text-center">
+                            <div class="sentimiento" v-bind:class="classSentimiento(conclusion['Sentimiento'])">
+                                {{ conclusion['Sentimiento'] }}
+                            </div>
+                            <div>
+                                <small class="analisis-sentimiento">Sentimiento</small>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <h4>{{ conclusion['Tipo de Conclusión'] }}</h4>
+                            <p>
+                                <span class="prospectiva" v-bind:class="textToClass(conclusion['Prospectiva'], 'prospectiva')">{{ conclusion['Prospectiva'] }}</span>
+                            </p>
+                            <p><small class="text-muted">Temática: </small>{{ conclusion['Temática'] }}</p>
+                            <p>
+                                {{ conclusion['Conclusión'] }}
+                            </p>
+                            <div class="mb-2">
+                                <div>
+                                    Relevancia {{ conclusion['Relevancia'] }}/1
+                                </div>
+                                <div class="progress" style="height: 5px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-label="Example 1px high" v-bind:style="relevanciaPercent(conclusion['Relevancia'])" v-bind:aria-valuenow="conclusion['Relevancia']" aria-valuemin="0" aria-valuemax="100">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- LISTA DE CONCLUSIONES DETALLADAS -->
+                <div v-show="section == 'conclusionesDetalladas'">
+                    <div v-for="conclusion in conclusiones" class="row mb-3">
                         <div class="col-md-2 text-center">
                             <div class="sentimiento" v-bind:class="classSentimiento(conclusion.sentimiento)">
                                 {{ conclusion.sentimiento }}
@@ -134,10 +234,16 @@
                                 {{ conclusion.conclusion }}
                             </p>
                             <p class="text-muted text-end">{{ conclusion.organizacion }}</p>
-                            <div class="progress" style="height: 2px;">
-                                <div class="progress-bar bg-primary" role="progressbar" aria-label="Example 1px high" v-bind:style="relevanciaPercent(conclusion.relevancia)" aria-valuenow="conclusion.relevancia" aria-valuemin="0" aria-valuemax="100">
-
+                            <div class="d-flex">
+                                <div>
+                                    Relevancia
                                 </div>
+                                <div class="progress" style="height: 2px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-label="Example 1px high" v-bind:style="relevanciaPercent(conclusion.relevancia)" aria-valuenow="conclusion.relevancia" aria-valuemin="0" aria-valuemax="100">
+    
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -8,26 +8,32 @@ const baseUrl = window.location.origin + window.location.pathname;
 
 // VueApp
 //-----------------------------------------------------------------------------
-var horizontesApp = createApp({
+var explorarApp = createApp({
     data(){
         return{
             nombreElemento: 'conclusión',
             nombreElementos: 'horizontes',
             menu:[
-                {name: 'horizontes.html', title: 'Horizontes', active: true},
+                {name: 'horizontes.html', title: 'Horizontes', active: false},
                 {name: 'entrevistas.html', title: 'Entrevistas', active: false},
-                {name: 'explorar.html', title: 'Explorar', active: false},
+                {name: 'explorar.html', title: 'Explorar', active: true},
                 {name: 'balance.html', title: 'Balance', active: false},
             ],
-            submenu:[
-                {name: 'conclusiones', title: 'Resumen', active: true, display: true},
-                {name: 'conclusionesN2', title: 'Conclusiones', active: true, display: true},
-                {name: 'conclusionesDetalladas', title: 'Detalles', active: false, display: false},
+            prospectivas: [
+                {name:'Oportunidad', title:'Oportunidad'},
+                {name:'Fortaleza', title:'Fortaleza'},
+                {name:'Amenaza', title:'Amenaza'},
+                {name:'Debilidad', title:'Debilidad'},
+            ],
+            tiposConclusion:[
+                {name:'Identificación del Problema',title:'Identificación del Problema'},
+                {name:'Otra Perspectiva',title:'Otra Perspectiva'},
+                {name:'Soluciones Propuestas',title:'Soluciones Propuestas'},
             ],
             contenidos: dataContenidos,
             loading: false,
-            section:'lista',
-            elementos: dataHorizontes,
+            section:'conclusionesN2',
+            horizontes: dataHorizontes,
             conclusionesGenerales: dataConclusionesGenerales,
             conclusionesN2: dataConclusionesN2,
             conclusiones: dataConclusiones,
@@ -35,7 +41,10 @@ var horizontesApp = createApp({
             currentElement: {'id':0,'nombre':'Cargando...'},
             q: '',
             filters: {
-                status: '' 
+                horizonteId: 0,
+                prospectiva: '',
+                tipoConclusion: '',
+                status: ''
             },
             filtroEstados: ['en-revision','finalizado'],
         }
@@ -45,19 +54,6 @@ var horizontesApp = createApp({
             this.section = newSection
             if ( newSection = 'lista' ) {
                 history.pushState(null, null, baseUrl)
-            }
-        },
-        getList: function(){
-            this.loading = true
-            axios.get('projects/entrevistas-pdc2038/data/horizontes.json')
-            .then(response => {
-                this.elementos = response.data
-            })
-            .catch(function(error) { console.log(error) })
-        },
-        checkCurrent: function(){
-            if ( elementoIdInicial > 0) {
-                this.setCurrent(elementoIdInicial)
             }
         },
         clearSearch: function(){
@@ -70,20 +66,6 @@ var horizontesApp = createApp({
                 return Pcrn.textToClass(text)
             }
             return prefix + '-' + Pcrn.textToClass(text)
-        },
-        setCurrent: function(horizonteId, newSection = ''){
-            if ( newSection.length > 0 ) this.section = newSection
-            this.currentId = horizonteId
-            this.currentElement = this.elementos.find(elemento => elemento['id'] == horizonteId)
-            this.scrollToTop()
-            history.pushState(null, null, baseUrl +'?horizonte_id=' + horizonteId)
-        },
-        resetCurrent: function(){
-            this.section = 'lista'
-            this.currentId = 0
-            this.currentElement = {'id':0,'nombre':'Cargando...'},
-            this.scrollToTop()
-            history.pushState(null, null, baseUrl)
         },
         scrollToTop: function(){
             window.scrollTo({
@@ -108,7 +90,6 @@ var horizontesApp = createApp({
             this.section = newSubmenu
         },
         startApp: function(){
-            this.setCurrent(5)
             this.section = 'conclusionesN2'
         },
     },
@@ -132,7 +113,15 @@ var horizontesApp = createApp({
         },
         conclusionesN2Filtradas: function() {
             var listaFiltrada = this.conclusionesN2
-            listaFiltrada = listaFiltrada.filter(conclusion => conclusion.horizonte_id == this.currentElement.id)
+            if (this.filters.horizonteId > 0) {
+                listaFiltrada = listaFiltrada.filter(conclusion => conclusion.horizonte_id == this.filters.horizonteId)
+            }
+            if (this.filters.prospectiva != '') {
+                listaFiltrada = listaFiltrada.filter(conclusion => conclusion['Prospectiva'] == this.filters.prospectiva)
+            }
+            if (this.filters.tipoConclusion != '') {
+                listaFiltrada = listaFiltrada.filter(conclusion => conclusion['Tipo de Conclusión'] == this.filters.tipoConclusion)
+            }
             return listaFiltrada
         },
         conclusionesGeneralesFiltradas: function() {
@@ -142,4 +131,4 @@ var horizontesApp = createApp({
         },
 
     }
-}).mount('#horizontesApp')
+}).mount('#explorarApp')

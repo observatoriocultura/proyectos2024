@@ -3,7 +3,7 @@
     font-size: 1.9em;
     background-color: #F3C301;
     padding: 0.1em 0.5em;
-    border-radius: 10px;
+    border-radius: 2px;
     color: #FFF;
     min-width: 2em;
     text-align: center;
@@ -12,6 +12,34 @@
 .horizonte-numero:hover {
     background-color: #D1A801;
 }
+
+.horizonte-selector {
+    min-width: 2em;
+    min-height: 2em;
+    background-color: #FAFAFA;
+    border: 1px solid #DEE2E6;
+    text-align: center;
+    align-items: center;
+    border-radius: 3px;
+    margin-right: 3px;
+    cursor: pointer;
+    display: flex;            /* Usar flexbox para centrar el contenido */
+    justify-content: center;  /* Centrar horizontalmente */
+    align-items: center;      /* Centrar verticalmente */
+}
+
+.horizonte-selector:hover{
+    background-color: #F3C301;
+    border-color: #F3C301;
+    color: #FAFAFA;
+}
+
+.horizonte-selector.active{
+    background-color: #F3C301;
+    border-color: #F3C301;
+    color: #FAFAFA;
+}
+
 
 .prospectiva {
     display: inline-block;
@@ -32,7 +60,7 @@
     font-size: 1.2em;
     background-color: #FAFAFA;
     padding: 0.1em 0.5em;
-    border-radius: 10px;
+    border-radius: 3px;
     color: #FFF;
     min-width: 3em;
     text-align: center;

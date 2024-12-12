@@ -85,6 +85,11 @@ var Pcrn = new function()
      * @return {string} texto tranformado
      */
     this.textToClass = function textToClass(inputText){
+        // Validar que inputText sea un string válido
+        if (typeof inputText !== 'string' || inputText === undefined || inputText === null) {
+            return ''; // Devuelve un string vacío si no es válido
+        }
+
         let text = inputText.toLowerCase();
         text = text.replace(/ /g, "-"); // Guiones en lugar de espacios
 
