@@ -33,6 +33,7 @@
     <script src="data/conclusiones_n2.js"></script>
     <script src="data/conclusiones.js"></script>
     <script src="data/contenidos.js"></script>
+    <script src="data/parrafos.js"></script>
 
 </head>
 <body>
@@ -99,11 +100,11 @@
                     </p>
                     <div class="row mb-4 border-bottom pb-2" v-for="(elemento, i) in elementosFiltrados">
                         <div class="col-md-2 text-end">
-                            <div class="horizonte-numero" v-on:click="setCurrent(elemento.id)">{{ elemento.id }}</div>
+                            <div class="horizonte-numero" v-on:click="setCurrent(elemento.id, 'resumen')">{{ elemento.id }}</div>
                         </div>
                         <div class="col-md-10">
                             <h5 class="card-title text-main">
-                                <a v-bind:href="elemento.link" class="pointer" v-on:click="setCurrent(elemento.id, 'conclusiones')"
+                                <a v-bind:href="elemento.link" class="pointer" v-on:click="setCurrent(elemento.id, 'resumen')"
                                     v-bind:title="`[` + elemento.id + `] ` + elemento.nombre">
                                     {{ elemento.nombre }}
                                 </a>
@@ -144,6 +145,13 @@
                     </ul>
                 </div>
 
+                <div v-show="section == 'resumen'">
+                    
+                    <div class="resumen" v-for="parrafo in parrafos" v-show="parrafo.horizonte_id == currentElement.id">
+                        <p class="lead display-6 text-muted">{{ parrafo.titulo }}</p>
+                        <div v-html="parrafo.conclusion"></div>
+                    </div>
+                </div>
 
                 <!-- LISTA DE CONCLUSIONES GENERALES -->
                 <div v-show="section == 'conclusiones'">
@@ -178,7 +186,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- LISTA DE CONCLUSIONES -->

@@ -20,8 +20,9 @@ var horizontesApp = createApp({
                 {name: 'balance.html', title: 'Balance', active: false},
             ],
             submenu:[
-                {name: 'conclusiones', title: 'Resumen', active: true, display: true},
-                {name: 'conclusionesN2', title: 'Conclusiones', active: true, display: true},
+                {name: 'resumen', title: 'Resumen', active: true, display: true},
+                {name: 'conclusiones', title: 'Conclusiones', active: false, display: true},
+                {name: 'conclusionesN2', title: 'Detalles', active: false, display: true},
                 {name: 'conclusionesDetalladas', title: 'Detalles', active: false, display: false},
             ],
             contenidos: dataContenidos,
@@ -31,6 +32,7 @@ var horizontesApp = createApp({
             conclusionesGenerales: dataConclusionesGenerales,
             conclusionesN2: dataConclusionesN2,
             conclusiones: dataConclusiones,
+            parrafos: dataParrafos,
             currentId: elementoIdInicial,
             currentElement: {'id':0,'nombre':'Cargando...'},
             q: '',
@@ -108,8 +110,8 @@ var horizontesApp = createApp({
             this.section = newSubmenu
         },
         startApp: function(){
-            this.setCurrent(5)
-            this.section = 'conclusionesN2'
+            //this.setCurrent(1)
+            //this.section = 'resumen'
         },
     },
     mounted(){
