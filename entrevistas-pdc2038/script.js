@@ -22,6 +22,7 @@ var horizontesApp = createApp({
             submenu:[
                 {name: 'resumen', title: 'Resumen', active: true, display: true},
                 {name: 'conclusiones', title: 'Conclusiones', active: false, display: true},
+                {name: 'nubes', title: 'Nube de palabras', active: false, display: true},
                 {name: 'conclusionesN2', title: 'Detalles', active: false, display: true},
                 {name: 'conclusionesDetalladas', title: 'Detalles', active: false, display: false},
             ],

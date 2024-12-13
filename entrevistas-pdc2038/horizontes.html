@@ -146,11 +146,14 @@
                 </div>
 
                 <div v-show="section == 'resumen'">
-                    
                     <div class="resumen" v-for="parrafo in parrafos" v-show="parrafo.horizonte_id == currentElement.id">
                         <p class="lead display-6 text-muted">{{ parrafo.titulo }}</p>
                         <div v-html="parrafo.conclusion"></div>
                     </div>
+                </div>
+
+                <div v-show="section == 'nubes'">
+                    <img v-bind:src="`content/nubes/${elemento.id}.png`" alt="Nube de palabras" v-for="elemento in elementos" v-show="elemento.id == currentElement.id">
                 </div>
 
                 <!-- LISTA DE CONCLUSIONES GENERALES -->
