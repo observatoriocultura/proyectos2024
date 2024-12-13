@@ -15,7 +15,6 @@ var horizontesApp = createApp({
             nombreElementos: 'horizontes',
             menu:[
                 {name: 'horizontes.html', title: 'Horizontes', active: true},
-                {name: 'entrevistas.html', title: 'Entrevistas', active: false},
                 {name: 'explorar.html', title: 'Explorar', active: false},
                 {name: 'balance.html', title: 'Balance', active: false},
                 {name: 'info.html', title: 'Información', active: false},

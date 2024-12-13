@@ -15,7 +15,6 @@ var balanceApp = createApp({
             nombreElementos: 'entrevistas',
             menu:[
                 {name: 'horizontes.html', title: 'Horizontes', active: false},
-                {name: 'entrevistas.html', title: 'Entrevistas', active: false},
                 {name: 'explorar.html', title: 'Explorar', active: false},
                 {name: 'balance.html', title: 'Balance', active: true},
                 {name: 'info.html', title: 'Información', active: false},
