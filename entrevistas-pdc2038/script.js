@@ -18,6 +18,7 @@ var horizontesApp = createApp({
                 {name: 'entrevistas.html', title: 'Entrevistas', active: false},
                 {name: 'explorar.html', title: 'Explorar', active: false},
                 {name: 'balance.html', title: 'Balance', active: false},
+                {name: 'info.html', title: 'Información', active: false},
             ],
             submenu:[
                 {name: 'resumen', title: 'Resumen', active: true, display: true},

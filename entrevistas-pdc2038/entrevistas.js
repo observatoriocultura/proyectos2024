@@ -18,6 +18,7 @@ var entrevistasApp = createApp({
                 {name: 'entrevistas.html', title: 'Entrevistas', active: true},
                 {name: 'explorar.html', title: 'Explorar', active: false},
                 {name: 'balance.html', title: 'Balance', active: false},
+                {name: 'info.html', title: 'Información', active: false},
             ],
             loading: false,
             section:'lista',

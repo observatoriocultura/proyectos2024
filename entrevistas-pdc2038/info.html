@@ -57,12 +57,51 @@
 
             
 
-            <div class="container">
-                <iframe width="100%" height="820px" src="https://lookerstudio.google.com/embed/reporting/7e71d3f7-ce90-4884-ae81-a615b379a4c5/page/p_gnoh1xqtnd" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+            <div class="center_box_750">
+                <p class="text-center">
+                    Este contenido se realizó en el marco de la ejecución del Plan Anual de Investigaciones 2024 de la Dirección Observatorio y Gestión del Conocimiento Cultural.
+                    Investigación i095.
+                    Corresponde al diseño de una metodología para sistematizar y analizar entrevistas cualitativas a actores clave
+                    asociados a la cultura para proporcionar insumos de información para la estructuración del Plan Distrital de Cultura 2038 de Bogotá.
+                </p>
+                <p>
+                    
+                </p>
+                <h3 class="text-main">
+                    Datos detallados
+                </h3>
+                <p>
+                    Descargué aquí los datos detallados de todo el procesamiento realizado a las trascripcciones de las entrevistas analizadas:
+                    <a href="https://docs.google.com/spreadsheets/d/1pHlYlsVhiWiHZs-Syxfg8rMIXU9O8WNFDdOOS-bdjyk/edit?gid=1327383703#gid=1327383703" class="btn btn-success btn-sm" target="_blank">
+                        ABRIR
+                    </a>
+                </p>
+                <hr>
+                <div class="row my-5">
+                    <div class="col-md-4 text-center" v-for="persona in personas">
+                        <img class="w75p rounded-circle border border-1" v-bind:src="`content/personas/${persona.name}.jpg`" v-bind:alt="persona.title">
+                        <div class="mt-2">
+                            <strong class="text-muted">{{ persona.title }}</strong><br>
+                            <small class="text-main">{{ persona.role }}</small>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <img class="w150p" src="../resources/images/observatorio/logo-dogcc-yellow.png" alt="Logo Observatorio">
+                    </div>
+                    <div>
+                        <img class="w100p" src="../resources/images/app/sello-cultura-bogota-negro.png" alt="Sello Cultura Bogotá">
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </div>
-    <script src="balance.js"></script>
+    <script src="info.js"></script>
 </body>
 </html>
 

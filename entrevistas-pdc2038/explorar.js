@@ -18,6 +18,7 @@ var explorarApp = createApp({
                 {name: 'entrevistas.html', title: 'Entrevistas', active: false},
                 {name: 'explorar.html', title: 'Explorar', active: true},
                 {name: 'balance.html', title: 'Balance', active: false},
+                {name: 'info.html', title: 'Información', active: false},
             ],
             prospectivas: [
                 {name:'Oportunidad', title:'Oportunidad'},
