@@ -111,8 +111,8 @@ var horizontesApp = createApp({
             this.section = newSubmenu
         },
         startApp: function(){
-            //this.setCurrent(1)
-            //this.section = 'resumen'
+            this.setCurrent(1)
+            this.section = 'resumen'
         },
     },
     mounted(){

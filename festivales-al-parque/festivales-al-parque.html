@@ -67,10 +67,19 @@
                     <div v-for="(elemento, i) in elementos" v-show="elemento.mostrar == 'Sí'">
                         <div>
                             <a v-bind:href="elemento.link_tablero" class="pointer" v-on:click="setCurrent(elemento.id)"
-                                v-bind:title="`[` + elemento.id + `] ` + elemento.festival">
+                                v-bind:title="`[` + elemento.id + `] ` + elemento.festival" target="_blank">
                                 <img class="w-100" v-bind:src="`content/thumbnails/${elemento.cod}.jpg`" alt="">
                             </a>
                         </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 d-flex justify-content-between">
+                    <div>
+                        <img class="w150p" src="../resources/images/observatorio/logo-dogcc-yellow.png" alt="Logo Observatorio">
+                    </div>
+                    <div>
+                        <img class="w100p" src="../resources/images/app/sello-cultura-bogota-negro.png" alt="Sello Cultura Bogotá">
                     </div>
                 </div>
 
