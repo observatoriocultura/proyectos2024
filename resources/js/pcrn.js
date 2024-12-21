@@ -1,7 +1,7 @@
 /**
  * FUNCIONES GENERALES PARA EL USO EN EL LENGUAJE JAVASCRIPT
  * DESARROLLADAS POR Pacarina Media Lab (Pcrn)
- * 2021-10-05
+ * 2024-12-15
  * 
  */
 
@@ -80,7 +80,7 @@ var Pcrn = new function()
     /**
      * Convierte un texto a un formato clase CSS, minúsculas sin espacios
      * ni acentos
-     * 2024-05-16
+     * 2024-12-12
      * @param {string} inputText Texto de entrada
      * @return {string} texto tranformado
      */
