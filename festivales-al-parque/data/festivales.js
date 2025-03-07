@@ -56,7 +56,7 @@ const dataFestivales =
     carpeta: "https://drive.google.com/drive/folders/1QCE-FMt-wbEBa_0l5JYBt1srt0YMuEYk?usp=drive_link",
     mostrar: "Sí",
     estado: "Finalizado",
-    link_tablero: "",
+    link_tablero: "https://app.powerbi.com/view?r=eyJrIjoiMDQxMTI0NDMtNDU2Zi00ZjNkLThlOTgtYTAxOTg5MmVlYTY5IiwidCI6IjRmNzkzOWM3LWFhNjAtNDliZC05YjdiLTZmODFjMzdkMWIzNyJ9&pageName=69b48348ad3ee2b5bec5",
     link_datos_encuesta_asistentes: "https://docs.google.com/spreadsheets/d/1Clr0vRb8nk1zlMmcbW_trs7IXOb12_Ki/edit?usp=sharing&ouid=105090632649587320414&rtpof=true&sd=true",
     link_formulario_encuesta: "https://drive.google.com/file/d/1ajPj23Hydvj_JCRVXktSXZmsVwqP5-S3/view?usp=sharing",
     plataforma: "PowerBi",
